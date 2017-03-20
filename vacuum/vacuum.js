@@ -24517,7 +24517,7 @@
 	        ' seconds! Reset?'
 	      )
 	    ) : '',
-	    React.createElement(_table2.default, { currentRoom: currentRoom })
+	    React.createElement(_table2.default, { dispatch: dispatch, currentRoom: currentRoom })
 	  );
 	};
 	
@@ -24550,7 +24550,8 @@
 	  LOADED_ROOM: 'LOADED_ROOM',
 	  RESET_ROOM: 'RESET_ROOM',
 	  RANDOM_ROOM: 'RANDOM_ROOM',
-	  VACUUM_MOVE: 'VACUUM_MOVE'
+	  VACUUM_MOVE: 'VACUUM_MOVE',
+	  VACUUM_MOVE_TO: 'VACUUM_MOVE_TO'
 	};
 
 /***/ },
@@ -24642,8 +24643,16 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _actions = __webpack_require__(/*! ../../actions */ 219);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	var Table = function Table(_ref) {
-	  var currentRoom = _ref.currentRoom;
+	  var dispatch = _ref.dispatch,
+	      currentRoom = _ref.currentRoom;
 	  return React.createElement(
 	    'table',
 	    null,
@@ -24658,6 +24667,9 @@
 	            return React.createElement(
 	              'td',
 	              {
+	                onClick: function onClick() {
+	                  return dispatch({ type: _actions2.default.VACUUM_MOVE_TO, payload: { x: j, y: i } });
+	                },
 	                key: j,
 	                className: cell !== 0 ? isNaN(cell) ? 'wall' : 'dirt' : '' },
 	              React.createElement('span', { style: { opacity: isNaN(cell) ? 1 : cell / 5 } })
@@ -27163,6 +27175,10 @@
 	  return (0, _ramda.pipe)((0, _ramda.prop)('currentRoom'), (0, _ramda.nth)(payload.y), (0, _ramda.nth)(payload.x))(state);
 	};
 	
+	var getVacuumPosition = function getVacuumPosition(state) {
+	  return (0, _ramda.path)(['vacuum', 'position', 'current'], state);
+	};
+	
 	// fired as the vacuum moves into a tile
 	var tileSuck = function tileSuck(payload, state) {
 	  var tile = getTile(payload, state);
@@ -27180,7 +27196,7 @@
 	
 	// fired as the user uses the keyboard cursors
 	var vacuumMove = function vacuumMove(payload, state) {
-	  var current = (0, _ramda.path)(['vacuum', 'position', 'current'], state);
+	  var current = getVacuumPosition(state);
 	  // gets the relative position of the next tile
 	  var positionModifier = _constants2.default.modifier[payload];
 	  // the next object, or the next tile the vacuum is moving into, is used for generating the room's new state
@@ -27201,6 +27217,11 @@
 	    // Note: if there is no dirt left (the game has been won), just return the lastMoveTime rather than creating a new date
 	    lastMoveTime: dirtLeft ? new Date().getTime() : (0, _ramda.prop)('lastMoveTime', roomAfterSuck)
 	  }) : state;
+	};
+	
+	var vacuumMoveTo = function vacuumMoveTo(payload, state) {
+	  var direction = getDirection(getVacuumPosition(state), payload);
+	  return direction ? vacuumMove(direction, state) : state;
 	};
 	
 	// runs through the array, turning strings from the JSON object into integers (for tile dirt levels)
@@ -27278,8 +27299,13 @@
 	    case _actions2.default.TILE_SUCK:
 	      return tileSuck(action.payload, state);
 	
+	    // triggered on keyboard cursor input
 	    case _actions2.default.VACUUM_MOVE:
 	      return vacuumMove(action.payload, state);
+	
+	    // triggered when 'clicking' a tile above, below, left or right of the vacuum
+	    case _actions2.default.VACUUM_MOVE_TO:
+	      return vacuumMoveTo(action.payload, state);
 	
 	    default:
 	      return state;
@@ -39828,9 +39854,11 @@
 	
 	var _marked = [_callee2].map(_regenerator2.default.mark);
 	
+	// decided that a keyboard input is a side effect, therefore belongs in the sagas
 	var keyHandler = function keyHandler(ch) {
 	  return function (e) {
 	    var direction = _constants2.default.keyCodes[e.keyCode];
+	    // only trigger a VACUUM_MOVE action if the keycode exists in the constant (eg. up down left or right, "b" will return undefined)
 	    if (direction) {
 	      ch.put({ type: _actions2.default.VACUUM_MOVE, payload: direction });
 	    }
