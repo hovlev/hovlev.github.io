@@ -1,0 +1,915 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="assets/global.css">
+    <link rel="stylesheet" type="text/css" href="assets/search.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/selectize.css">
+    <style>
+        body {
+            padding: 50px 0;
+        }
+        table.parts-table {
+            width: 1240px;
+            margin: 0 auto;
+        }
+        table.parts-table tr:nth-child(2n) {
+            background: #f7f7f7;
+        }
+        table.parts-table tr:nth-child(2n) td {
+            background: #f7f7f7;
+        }
+        table.parts-table td.col_manPart img {
+            display: block;
+        }
+        table.parts-table td.col_description {
+            border-left: 1px solid #d0d0d0;
+        }
+        .col_ecp {
+            min-width: 170px;
+        }
+        .col_price {
+            min-width: 140px;
+        }
+        .select-box { cursor: pointer; }
+        .select-box label,
+        .select-box select, {
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .select-box.disabled {
+            background: transparent;
+        }
+
+        .select-box label {
+            padding: 8px 8px 0;
+            background: #FFFFFF;
+            color: #999999;
+            font-size: 12px;
+            border: 1px solid #CCCCCC;
+            border-bottom-width: 0;
+            display: block;
+        }
+        .select-box select,
+        .selectize-input {
+            padding: 5px 8px 8px;
+            background: #FFFFFF;
+            color: #000000;
+            font-size: 14px;
+            border: 1px solid #CCCCCC;
+            border-top-width: 0;
+            font-weight: normal;
+        }
+
+        .select-box.disabled select,
+        .select-box.disabled label {
+            border: 0;
+            background: transparent;
+        }
+        .select-box.disabled label {
+            padding-top: 0;
+        }
+
+        .select-box.end-customer:not(.disabled) {
+            margin-bottom: 10px;
+        }
+
+        .pricing-list td {
+            border: 0;
+            padding: 0;
+            line-height: 1.6em;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+    <table class="parts-table">
+
+        <thead>
+            <tr class="thead">
+                <th><input type="checkbox" id="select_all" name="select_all"></th>
+                <th id="arwpartnum" class="header">Manufacturer Part #</th>
+                <th id="suppname" class="header">Manufacturer Name</th>
+                <th>End Customer<br />Customer Part #</th>
+                <th class="cell_price">Price (EUR)</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Data</th>
+                <th>RoHS</th>
+                <th>Multiple</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <!-- SCENARIO NO EC, NO PRICE -->
+            <tr data-partId="1762_00297604">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox">
+                </td>
+                <td>
+                    <a href="#">
+                        LC4256V-75FTN256BI
+                        <img src="http://download.siliconexpert.com/pdfs/2013/6/30/1/58/45/931/lat_/manual/lcmxo2280c-3ftn256c.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    Lattice Semiconductor
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    CPLD ispMACHÂ® 4000V Family 256 Macro Cells 168MHz 3.3V 256-Pin FTBGA
+                </td>
+                <td id="cart_5" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" value="" placeholder="Min. Qty: 90"><br>
+                    <a href="#" class="addToCartButton button green">Add to Cart</a>
+                </td>
+                <td>
+                    <a href="#" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left" class=" custom row1">
+                    90
+                </td>
+            </tr>
+
+
+            <!-- SCENARIO NO EC, DEFAUT PRICE -->
+            <tr data-partId="BAV70">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox" >
+                </td>
+                <td class="col_manPart">
+                    <a href="#">
+                        BAV70
+                        <img src="http://download.siliconexpert.com/pdfs/2013/6/2/5/13/5/691/ons_/manual/sot-23.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    That TechCo
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    Diode Small Signal Switching 100V 1.5A Automotive 3-Pin T/R
+                </td>
+                <td id="cart_1" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" name="desiredQty" value="" placeholder="Min. Qty: 3,000"><br />
+                    <a href="#" class="quoteButton button blue">Call For Quote</a>
+                </td>
+                <td>
+                    <a href="#" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left">
+                    3,000
+                </td>
+            </tr>
+
+
+            <!-- SCENARIO A -->
+            <tr data-partId="0323_00078406">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox">
+                </td>
+                <td class="col_manPart">
+                    <a href="#">
+                        BAV199LT1G
+                        <img src="http://download.siliconexpert.com/pdfs/2013/6/2/5/13/5/691/ons_/manual/sot-23.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    ON Semiconductor
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    Diode Small Signal Switching 70V 0.715A Automotive 3-Pin SOT-23 T/R
+                </td>
+                <td id="cart_1" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" name="desiredQty" value="" placeholder="Min. Qty: 3,000"><br />
+                    <a href="#" class="quoteButton button blue">Call For Quote</a>
+                </td>
+                <td>
+                    <a href="#" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left">
+                    3,000
+                </td>
+            </tr>
+
+
+            <!-- SCENARIO B -->
+            <tr data-partId="1762_08081223">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox" >
+                </td>
+                <td class="col_manPart">
+                    <a href="/part/detail/1762_08081223">
+                        ATSHA204A-RBHCZ-T
+                        <img src="http://download.siliconexpert.com/pdfs/2015/2/10/13/43/6/490/atm_/manual/3-smd-no-lead.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    Atmel
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    CryptoAuthentication 3-Pin Contact T/R
+                </td>
+                <td id="cart_4" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" name="desiredQty" value="" placeholder="Min. Qty: 10,000"><br />
+                    <a href="#" class="addToCartButton button green">Add to Cart</a>
+                </td>
+                <td>
+                    <a href="/part/dataview/1762_08081223" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left">
+                    5,000
+                </td>
+            </tr>
+
+            <!-- SCENARIO C -->
+            <tr data-partId="5M160ZE64I5N">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox">
+                </td>
+                <td class="col_manPart">
+                    <a href="#">
+                        5M160ZE64I5N
+                        <img src="http://download.siliconexpert.com/pdfs/2013/5/12/6/38/20/992/alt_/manual/64-eqfp-.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    Altera
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    CPLD MachXO2 Family 2.5V/3.3V 332-Pin CABGA Tray
+                </td>
+                <td id="cart_4" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" name="desiredQty" value="" placeholder="Min. Qty: 10,000"><br />
+                    <a href="#" class="addToCartButton button green">Add to Cart</a>
+                </td>
+                <td>
+                    <a href="#" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left">
+                    5,000
+                </td>
+            </tr>
+
+
+            <!-- SCENARIO D -->
+            <tr data-partId="VE-101M1CTR-0605">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox" >
+                </td>
+                <td class="col_manPart">
+                    <a href="#">
+                        VE-101M1CTR-0605
+                        <img src="http://download.siliconexpert.com/pdfs/2013/7/14/1/29/37/223/lelon_/manual/ve.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    Nichicon
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    Cap Aluminum Lytic 100uF 16V 20% (6.3 X 5.3mm) SMD 89mA 2000h 85C T/R
+                </td>
+                <td id="cart_1" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" name="desiredQty" value="" placeholder="Min. Qty: 3,000"><br />
+                    <a href="#" class="quoteButton button blue">Call For Quote</a>
+                </td>
+                <td>
+                    <a href="#" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left">
+                    3,000
+                </td>
+            </tr>
+
+
+
+            <tr data-partId="0323_02025958">
+                <td>
+                    <input type="checkbox" class="checkBoxAll" name="quoteCheckBox" id="quoteCheckBox" value="0323_02025958">
+                </td>
+                <td class="col_manPart">
+                    <a href="#">
+                        MAH 406
+                        <img src="http://download.siliconexpert.com/pdfs/2013/5/22/4/59/21/553/fchre_/manual/mah406.jpg" width="70" height="70">
+                    </a>
+                </td>
+                <td>
+                    Fischer Elektronik
+                </td>
+                <td class="col_ecp">
+                    <img src="assets/ajax-loader-inline.gif" class="loader" />
+                    <div class="select-box end-customer"></div>
+                    <div class="select-box customer-part-number"></div>
+                </td>
+                <td class="col_price"></td>
+                <td class="col_description">
+                    Spacers And Mounting Strips For LED
+                </td>
+                <td id="cart_2" class="col_quantity">
+                    <input type="text" size="5" maxlength="7" class="desired_qty" name="desiredQty" value="" placeholder="Min. Qty: 100"><br />
+                    <a href="#" class="addToCartButton button green">Add to Cart</a>
+                </td>
+                <td>
+                    <a href="#" target="_blank"><img src="assets/icon_datasheet.gif" alt="Download Datasheet" title="Download Datasheet"></a>
+                </td>
+                <td class="col_rohs">
+                    <img src="assets/icon_eu_compliant.gif" alt="EU ROHS - RHC" title="EU RoHS - RHC">
+                    <img src="assets/icon_china_rohs_compliant.gif" alt="China RoHS - RHC" title="China RoHS - RHC">
+                </td>
+                <td align="left"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="dist/js/standalone/selectize.min.js"></script>
+    <script>
+        const user = {
+            customerId: "EC00001",
+            endCustomerId: "EC00001",
+            name: "EC-1"
+        };
+        const parts = {
+
+            "1762_00297604": { // NO ECP, No Pricing Available
+                "docid": "1762_00297604",
+                "pricing": [],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1"
+                    }
+                }
+            },
+
+
+            "BAV70": { // NO ECP, Default Item Price
+                "docid": "BAV70",
+                "pricing": [{
+                    "minQty": 0,
+                    "price": "15.67"
+                }],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1"
+                    }
+                }
+            },
+
+
+            "0323_00078406": { // SCENARIO A
+                "docid": "0323_00078406",
+                "partNumber": "BAV199LT1G",
+                "pricing": [{
+                    "minQty": 0,
+                    "price": "1.4"
+                }],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1",
+                        "customerPartNumbers": {
+                            "2314234": {
+                                "id": "2314234",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "1.338"
+                                }]
+                            }
+                        }
+                    },
+                    "EC00002": {
+                        "id": "EC00002",
+                        "name": "EC-2",
+                        "customerPartNumbers": {
+                            "901331795": {
+                                "id": "901331795",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "1.227"
+                                }]
+                            }
+                        }
+                    },
+                    "EC00003": {
+                        "id": "EC00003",
+                        "name": "EC-3",
+                        "customerPartNumbers": {
+                            "91324323116": {
+                                "id": "91324323116",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "1.116"
+                                }]
+                            }
+                        }
+                    }
+                }
+            },
+
+
+            "1762_08081223": { // SCENARIO B
+                "docid": "1762_08081223",
+                "pricing": [{
+                    "minQty": 0,
+                    "price": "15.67"
+                }],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1",
+                        "customerPartNumbers": {
+                            "CPN00222": {
+                                "id": "CPN00222",
+                                "name": "CPN-222",
+                                "pricing": [{
+                                    "minQty": 1,
+                                    "price": "0.1227"
+                                }, {
+                                    "minQty": 10,
+                                    "price": "0.1077"
+                                }, {
+                                    "minQty": 25,
+                                    "price": "0.1076"
+                                }, {
+                                    "minQty": 100,
+                                    "price": "0.1031"
+                                }]
+                            },
+                            "CPN00223": {
+                                "id": "CPN00223",
+                                "name": "CPN-223",
+                                "pricing": [{
+                                    "minQty": 1,
+                                    "price": "0.1215"
+                                }, {
+                                    "minQty": 10,
+                                    "price": "0.1065"
+                                }, {
+                                    "minQty": 25,
+                                    "price": "0.1064"
+                                }, {
+                                    "minQty": 100,
+                                    "price": "0.1019"
+                                }]
+                            },
+                            "CPN00224": {
+                                "id": "CPN00224",
+                                "name": "CPN-224",
+                                "pricing": [{
+                                    "minQty": 1,
+                                    "price": "0.1209"
+                                }, {
+                                    "minQty": 10,
+                                    "price": "0.1056"
+                                }, {
+                                    "minQty": 25,
+                                    "price": "0.1055"
+                                }, {
+                                    "minQty": 100,
+                                    "price": "0.1015"
+                                }]
+                            }
+                        }
+                    }
+                }
+            },
+
+
+            "5M160ZE64I5N": { // SCENARIO C
+                "docid": "5M160ZE64I5N",
+                "pricing": [{
+                    "minQty": 0,
+                    "price": "2.85"
+                }],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1",
+                        "customerPartNumbers": {
+                            "CPN00111": {
+                                "id": "CPN00111",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "2.85"
+                                }]
+                            },
+                            "CPN00222": {
+                                "id": "CPN00222",
+                                "name": "CPN-222",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "1.85"
+                                }]
+                            },
+                            "CPN00333": {
+                                "id": "CPN00333",
+                                "name": "CPN-333",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "0.85"
+                                }]
+                            }
+                        }
+                    },
+                    "EC00002": {
+                        "id": "EC00002",
+                        "name": "EC-2",
+                        "customerPartNumbers": {
+                            "CPN00111": {
+                                "id": "CPN00111",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "2.85"
+                                }]
+                            },
+                            "CPN00222": {
+                                "id": "CPN00222",
+                                "name": "CPN-222",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "1.85"
+                                }]
+                            },
+                            "CPN00333": {
+                                "id": "CPN00333",
+                                "name": "CPN-333",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "0.85"
+                                }]
+                            }
+                        }
+                    },
+                    "EC00003": {
+                        "id": "EC00003",
+                        "name": "EC-3",
+                        "customerPartNumbers": {
+                            "CPN00111": {
+                                "id": "CPN00111",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "2.85"
+                                }]
+                            },
+                            "CPN00222": {
+                                "id": "CPN00222",
+                                "name": "CPN-222",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "1.85"
+                                }]
+                            },
+                            "CPN00333": {
+                                "id": "CPN00333",
+                                "name": "CPN-333",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "0.85"
+                                }]
+                            }
+                        }
+                    }
+                }
+            },
+
+
+            "VE-101M1CTR-0605": { // SCENARIO D
+                "docid": "VE-101M1CTR-0605",
+                "pricing": [{
+                    "minQty": 0,
+                    "price": "15.55"
+                }],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1",
+                        "customerPartNumbers": {
+                            "CPN00444": {
+                                "id": "CPN00444",
+                                "name": "CPN-444",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "15.41"
+                                }]
+                            }
+                        }
+                    }
+                }
+            },
+
+
+            "0323_02025958": { // SCENARIO E
+                "docid": "0323_02025958",
+                "pricing": [{
+                    "minQty": 0,
+                    "price": "1.4"
+                }],
+                "endCustomers": {
+                    "EC00001": {
+                        "id": "EC00001",
+                        "name": "EC-1",
+                        "customerPartNumbers": {
+                            "CPN00111": {
+                                "id": "CPN00111",
+                                "name": "CPN-111",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "0.1226"
+                                }]
+                            }
+                        }
+                    },
+                    "EC00002": {
+                        "id": "EC00002",
+                        "name": "EC-2",
+                        "customerPartNumbers": {
+                            "CPN00222": {
+                                "id": "CPN00222",
+                                "name": "CPN-222",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "0.1227"
+                                }]
+                            }
+                        }
+                    },
+                    "EC00003": {
+                        "id": "EC00003",
+                        "name": "EC-3",
+                        "customerPartNumbers": {
+                            "CPN00333": {
+                                "id": "CPN00333",
+                                "name": "CPN-333",
+                                "pricing": [{
+                                    "minQty": 0,
+                                    "price": "0.1228"
+                                }]
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            // "0323_02025958": { // SCENARIO D
+            //     docid: "0323_02025958",
+            //     partNumber: "MAH 406",
+            //     pricing: [{
+            //         minQty: 0,
+            //         price: "0.029"
+            //     }],
+            //     endCustomers: {
+            //         "EC00001": {
+            //             id: "EC00001",
+            //             name: "EC-1"
+            //         },
+            //         "EC00002": {
+            //             id: "EC00002",
+            //             name: "EC-2"
+            //         }
+            //     }
+            // }
+        };
+
+        CUR = '&euro;';
+
+
+        class ECP {
+
+            constructor($part, user) {
+                this.$part = $part;
+                this.user = user;
+
+                this.partId = this.$part.attr('data-partId');
+                this.currentEndCustomerId = user.endCustomerId;
+                this.ecp_select = $('.col_ecp .end-customer', this.$part);
+                this.cpn_select = $('.col_ecp .customer-part-number', this.$part);
+                this.price_col = $('.col_price', this.$part);
+                this.selectedEC = null;
+                this.selectedCPN = null;
+
+                var that = this;
+                window.setTimeout(function() {
+                    that.getPricingData();
+                }, (Math.ceil(Math.random() * 2000)));
+            }
+
+            getPricingData() {
+                var data = parts[this.partId];
+                this.pricing = data.pricing;
+                this.endCustomers = data.endCustomers;
+                this.render();
+                this.subscribeEvents();
+            }
+
+            render() {
+                $('.col_ecp .loader', this.$part).remove();
+                if (Object.keys(this.endCustomers).length > 1) {
+                    this.renderEndCustomerView(this.endCustomers);
+                } else {
+                    this.ecp_select.addClass('disabled');
+                    this.selectedEC = this.currentEndCustomerId;
+                    if (this.endCustomers[this.currentEndCustomerId].customerPartNumbers) {
+                        let customerPartNumbers = this.endCustomers[this.currentEndCustomerId].customerPartNumbers;
+                        this.renderCustomerPartView(customerPartNumbers);
+                    } else {
+                        this.renderPricingView(this.pricing);
+                    }
+                }
+            }
+
+            subscribeEvents() {
+                $('.select-box.end-customer', this.$part).on('change', 'select', () => {
+                    this.selectedEC = $('.select-box.end-customer select option:selected', this.$part).val();
+                    this.selectedCPN = null;
+                    console.log("EC", this.selectedEC);
+                    if ( ! this.selectedEC) {
+                        this.selectedEC = null;
+                        this.removeCustomerPartView();
+                        this.removePricingView();
+                    } else {
+                        if (this.endCustomers[this.selectedEC].customerPartNumbers) {
+                            let customerPartNumbers = this.endCustomers[this.selectedEC].customerPartNumbers;
+                            console.log(customerPartNumbers);
+                            this.renderCustomerPartView(customerPartNumbers);
+                        } else {
+                            console.log('price');
+                            this.renderPricingView(this.pricing);
+                        }
+                    }
+                });
+                $('.select-box.customer-part-number', this.$part).on('change', 'select', () => {
+                    this.selectedCPN = $('.select-box.customer-part-number select option:selected', this.$part).val();
+                    console.log("CPN", this.selectedCPN);
+                    if ( ! this.selectedCPN) {
+                        this.selectedCPN = null;
+                        this.removePricingView();
+                    } else {
+                        let pricing;
+                        if (this.endCustomers[this.selectedEC].customerPartNumbers[this.selectedCPN].pricing) {
+                            pricing = this.endCustomers[this.selectedEC].customerPartNumbers[this.selectedCPN].pricing;
+                        } else {
+                            pricing = this.pricing;
+                        }
+                        this.renderPricingView(pricing);
+                    }
+                });
+            }
+
+            renderEndCustomerView(endCustomers) {
+                let options = '';
+                Object.keys(endCustomers).map(key => {
+                    let endCustomer = endCustomers[key];
+                    options += `<option value="${endCustomer.id}">${endCustomer.name}</option>`;
+                })
+
+                this.ecp_select.html(`
+                    <label for="part-${this.partId}__ec">End Customer</label>
+                    <select id="part-${this.partId}__ec" name"part-${this.partId}__ec" class="default" placeholder="Select">
+                        <option value="" disabled selected hidden>Select</option>
+                        ${options}
+                    </select>
+                `);
+                $('select', this.ecp_select).selectize();
+            }
+
+            renderCustomerPartView(customerPartNumbers) {
+                let disabled = ! (Object.keys(customerPartNumbers).length > 1);
+                let options = '';
+                if ( ! disabled) {
+                    options += `<option value="" disabled selected hidden>Select</option>`;
+                    this.cpn_select.removeClass('disabled');
+                } else {
+                    this.cpn_select.addClass('disabled');
+                }
+
+                Object.keys(customerPartNumbers).map(key => {
+                    let customerPartNumber = customerPartNumbers[key];
+                    if (disabled) {
+                        this.selectedCPN = customerPartNumber.id;
+                        this.renderPricingView(customerPartNumbers[customerPartNumber.id].pricing);
+                    }
+                    options += `<option value="${customerPartNumber.id}">${customerPartNumber.name}</option>`;
+                }, this);
+
+                this.cpn_select.html(`
+                    <label for="part-${this.partId}__cust-num">Customer Part #</label>
+                    <select id="part-${this.partId}__cust-num" name="part-${this.partId}__cust-num" class="${disabled ? ' disabled' : ''}" placeholder="Select" ${disabled ? ' disabled' : ''}>
+                        ${options}
+                    </select>
+                `);
+                $('select', this.cpn_select).selectize();
+            }
+
+            renderPricingView(pricing) {
+                let html = '';
+
+                if (pricing.length === 0) {
+                    html = `Call for price`;
+                } else if (pricing.length === 1) {
+                    html = `${CUR}${pricing[0].price}`;
+                } else {
+                    let priceOptions = '';
+
+                    pricing.map(partPrice => {
+                        priceOptions += `<tr><td align="left">${partPrice.minQty}+</td><td align="right">${CUR}${partPrice.price}</td></tr>`;
+                    });
+
+                    html = `<table class="pricing-list">${priceOptions}</table>`;
+                }
+                this.price_col.html(html);
+            }
+
+            removeEndCustomerView() {
+                this.ecp_select.html('');
+            }
+
+            removeCustomerPartView() {
+                this.cpn_select.html('');
+            }
+
+            removePricingView() {
+                this.price_col.html('');
+            }
+        };
+
+        $('document').ready(function(){
+            $('tr', 'table tbody').each(function(i, part) {
+                new ECP($(part), user);
+            });
+
+        });
+
+    </script>
+</body>
+</html>

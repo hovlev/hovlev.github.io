@@ -1,0 +1,53 @@
+{
+    "BAV74": {
+        "docid": "BAV74",
+        "pricing": [{
+            "minQty": 0,
+            "price": "1.4"
+        }],
+        "endCustomers": {
+            "EC00001": {
+                "id": "EC00001",
+                "name": "EC-1",
+                "customerPartNumbers": {
+                    "CPN00111": {
+                        "id": "CPN00111",
+                        "name": "CPN-111",
+                        "pricing": [{
+                            "minQty": 0,
+                            "price": "0.1228"
+                        }]
+                    }
+                }
+            },
+            "EC00002": {
+                "id": "EC00002",
+                "name": "EC-2",
+                "customerPartNumbers": {
+                    "CPN00111": {
+                        "id": "CPN00111",
+                        "name": "CPN-111",
+                        "pricing": [{
+                            "minQty": 0,
+                            "price": "0.1227"
+                        }]
+                    }
+                }
+            },
+            "EC00003": {
+                "id": "EC00003",
+                "name": "EC-3",
+                "customerPartNumbers": {
+                    "CPN00111": {
+                        "id": "CPN00111",
+                        "name": "CPN-111",
+                        "pricing": [{
+                            "minQty": 0,
+                            "price": "0.1226"
+                        }]
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "BAV70": {
+        "docid": "BAV70",
+        "pricing": [{
+            "minQty": 0,
+            "price": "15.67"
+        }],
+        "endCustomers": {
+            "EC00001": {
+                "id": "EC00001",
+                "name": "EC-1"
+            }
+        }
+    }
+}

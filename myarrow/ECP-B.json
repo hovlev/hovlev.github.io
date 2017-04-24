@@ -1,0 +1,68 @@
+{
+    "BAV74": {
+        "docid": "BAV21",
+        "pricing": [{
+            "minQty": 0,
+            "price": "15.67"
+        }],
+        "endCustomers": {
+            "EC00001": {
+                "id": "EC00001",
+                "name": "EC-1",
+                "customerPartNumbers": {
+                    "CPN00222": {
+                        "id": "CPN00222",
+                        "name": "CPN-222",
+                        "pricing": [{
+                            "minQty": 1,
+                            "price": "0.1227"
+                        }, {
+                            "minQty": 10,
+                            "price": "0.1077"
+                        }, {
+                            "minQty": 25,
+                            "price": "0.1076"
+                        }, {
+                            "minQty": 100,
+                            "price": "0.1031"
+                        }]
+                    },
+                    "CPN00223": {
+                        "id": "CPN00223",
+                        "name": "CPN-223",
+                        "pricing": [{
+                            "minQty": 1,
+                            "price": "0.1215"
+                        }, {
+                            "minQty": 10,
+                            "price": "0.1065"
+                        }, {
+                            "minQty": 25,
+                            "price": "0.1064"
+                        }, {
+                            "minQty": 100,
+                            "price": "0.1019"
+                        }]
+                    },
+                    "CPN00224": {
+                        "id": "CPN00224",
+                        "name": "CPN-224",
+                        "pricing": [{
+                            "minQty": 1,
+                            "price": "0.1209"
+                        }, {
+                            "minQty": 10,
+                            "price": "0.1056"
+                        }, {
+                            "minQty": 25,
+                            "price": "0.1055"
+                        }, {
+                            "minQty": 100,
+                            "price": "0.1015"
+                        }]
+                    }
+                }
+            }
+        }
+    }
+}

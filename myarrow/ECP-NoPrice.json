@@ -1,0 +1,12 @@
+{
+    "BAV70": {
+        "docid": "BAV70",
+        "pricing": [],
+        "endCustomers": {
+            "EC00001": {
+                "id": "EC00001",
+                "name": "EC-1"
+            }
+        }
+    }
+}

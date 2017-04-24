@@ -1,0 +1,25 @@
+{
+    "BAV103": {
+        "docid": "BAV103",
+        "pricing": [{
+            "minQty": 0,
+            "price": "15.55"
+        }],
+        "endCustomers": {
+            "EC00001": {
+                "id": "EC00001",
+                "name": "EC-1",
+                "customerPartNumbers": {
+                    "CPN00444": {
+                        "id": "CPN00444",
+                        "name": "CPN-444",
+                        "pricing": [{
+                            "minQty": 0,
+                            "price": "15.41"
+                        }]
+                    }
+                }
+            }
+        }
+    }
+}
